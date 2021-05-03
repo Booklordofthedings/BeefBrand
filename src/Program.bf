@@ -47,7 +47,6 @@ namespace AssetBuilder
 							if(!classes.HasMore)
 								FileData.Append(a);
 						}
-						FileData.Append(i);
 						FileOutName.Append(i);
 						FileOutName.Append(".bf");
 						
