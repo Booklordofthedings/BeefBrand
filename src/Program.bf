@@ -56,8 +56,8 @@ namespace AssetBuilder
 				FileData.Append("\n { \n");
 				for((String,String) i in Data )
 				{
-					
-					FileData.Append("public static uint8[] ");
+					String temp = scope String(scope $"public static uint8[{i.1.Length}] ");
+					FileData.Append(temp);
 					StringSplitEnumerator classes = i.0.Split('\\');
 					for(StringView a in classes)
 					{
@@ -65,7 +65,7 @@ namespace AssetBuilder
 							FileData.Append(a);
 					}
 						
-					FileData.Append(" = new uint8[](");
+					FileData.Append(" = .(");
 					for(int program = 0; program < i.1.Length;program++)
 					{
 
