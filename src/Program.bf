@@ -28,7 +28,7 @@ namespace AssetBuilder
 					String output = new String();
 					String filepath = new String();
 					i.GetFilePath(filepath);
-					if(File.ReadAllText(filepath,output) case .Ok) 
+					if(File.ReadAllText(filepath,output,true) case .Ok) 
 					{
 						Data.Add(filepath,output);
 					}

@@ -1,7 +1,7 @@
 FileVersion = 1
 LastConfig = "Release"
 LastPlatform = "Win64"
-RecentFilesList = ["src\\Program.bf", "src\\Arguments.bf", "c:\\Program Files\\BeefLang\\BeefLibs\\corlib\\src\\Result.bf"]
+RecentFilesList = ["src\\Program.bf", "src\\Arguments.bf", "c:\\Program Files\\BeefLang\\BeefLibs\\corlib\\src\\IO\\File.bf", "c:\\Program Files\\BeefLang\\BeefLibs\\corlib\\src\\Result.bf"]
 
 [MainWindow]
 X = 0
@@ -63,7 +63,6 @@ TabWidth = 110.0
 Type = "SourceViewPanel"
 FilePath = "src\\Arguments.bf"
 CursorPos = 790
-VertPos = 882.0
 ProjectName = "AssetBuilder"
 
 [[MainDockingFrame.DockedWidgets.DockedWidgets.DockedWidgets.Tabs]]
@@ -72,8 +71,8 @@ TabLabel = "Program.bf"
 TabWidth = 95.55556
 Type = "SourceViewPanel"
 FilePath = "src\\Program.bf"
-CursorPos = 1498
-VertPos = 210.0
+CursorPos = 57
+VertPos = 42.0
 ProjectName = "AssetBuilder"
 
 [[MainDockingFrame.DockedWidgets.DockedWidgets.DockedWidgets]]
