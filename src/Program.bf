@@ -18,7 +18,7 @@ namespace AssetBuilder
 			{
 
 				Dictionary<String,String> Data = scope Dictionary<String, String>(); //Stores data from the files
-				String FileOutName = scope String(); //The name of the output file
+				String FileOutName = scope String(parsed); //The name of the output file
 				FileEnumerator AssetableFiles = Directory.EnumerateFiles(parsed); //List of files that are in the folder we wanna hardcode
 				String FileData = new String(); //The String representation of the final output
 
@@ -36,34 +36,43 @@ namespace AssetBuilder
 
 				//Start adding data to the file
 				FileData.Append("class ");
-				StringSplitEnumerator enumerator = parsed.Split('/');
+				StringSplitEnumerator enumerator = parsed.Split('\\');
 				for(StringView i in enumerator)
 				{
 					if(!enumerator.HasMore)
 					{
-						StringSplitEnumerator classes = i.Split('\\');
-						for(StringView a in classes)
-						{
-							if(!classes.HasMore)
-								FileData.Append(a);
-						}
+						FileOutName.Append("\\");
 						FileOutName.Append(i);
-						FileOutName.Append(".bf");
-						
+						FileOutName.Append(".bf"); //output file name
+						FileData.Append(i); //class name
 					}
 				}
-				FileData.Append("\n { \n");
+
+				FileData.Append("\n{\n");
+				//Actual data starts here
 				for((String,String) i in Data )
 				{
+					StringSplitEnumerator noEndings = i.0.Split('.'); //'.' whats dis ?
+					String FileName = scope .();
+					for(StringView c in noEndings)
+					{
+						FileName = scope String(c);
+						break;
+					}
+
+					//This way we can make the file static and save alot alot of compile time
 					String temp = scope String(scope $"public static uint8[{i.1.Length}] ");
 					FileData.Append(temp);
-					StringSplitEnumerator classes = i.0.Split('\\');
+
+					//So that we can get the actual filename. There probably is a way to do this faster, but you would need someone less stupid than me to do that.
+					StringSplitEnumerator classes = FileName.Split('\\');
 					for(StringView a in classes)
 					{
 						if(!classes.HasMore)
 							FileData.Append(a);
 					}
-						
+
+					//The actual data from the file
 					FileData.Append(" = .(");
 					for(int program = 0; program < i.1.Length;program++)
 					{
@@ -75,6 +84,7 @@ namespace AssetBuilder
 						FileData.Append($"0x",hexval); //Append each character
 						FileData.Append(",");
 					}
+
 					FileData.Append("); \n");
 				}
 				FileData.Append("}");
