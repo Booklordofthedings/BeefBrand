@@ -7,14 +7,13 @@ namespace AssetBuilder
 	class Program
 	{
 		/*
-		 ______    
-		/\  == \   
-		\ \  __<   
-		 \ \_____\ 
-		  \/_____/
-
-		| Booklordofthedings
-		| Jannis von Hagen           
+		                                                                       
+		 _____         _   _           _     ___ _   _         _ _             
+		| __  |___ ___| |_| |___ ___ _| |___|  _| |_| |_ ___ _| |_|___ ___ ___  
+		| __ -| . | . | '_| | . |  _| . | . |  _|  _|   | -_| . | |   | . |_ -|
+		|_____|___|___|_,_|_|___|_| |___|___|_| |_| |_|_|___|___|_|_|_|_  |___|
+		                                                              |___|    
+		| Booklordofthedings | Jannis von Hagen | Booklordofthe.dev |      
 
 
 
@@ -66,6 +65,7 @@ namespace AssetBuilder
 
 			//Start adding data to the file
 			FileData.Append("class ");
+			if(Arguments.GetValue("out") case .Ok(FileOutName)){} //Test for the out argument
 			StringSplitEnumerator enumerator = parsed.Split('\\');
 			for(StringView i in enumerator)
 			{
@@ -118,6 +118,8 @@ namespace AssetBuilder
 				FileData.Append("); \n");
 			}
 			FileData.Append("}");
+			
+
 			File.WriteAllText(FileOutName,FileData);
 		}
 		
