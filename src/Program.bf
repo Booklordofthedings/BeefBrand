@@ -82,16 +82,49 @@ namespace AssetBuilder
 			//Actual data starts here
 			for((String,String) i in Data )
 			{
+				String BitSize = scope String();
+				int mult = 1;
+
 				StringSplitEnumerator noEndings = i.0.Split('.'); //'.' whats dis ?
 				String FileName = scope .();
 				for(StringView c in noEndings)
 				{
-					FileName = scope String(c);
-					break;
+					if(noEndings.Pos == 0)
+					{ 
+						FileName = scope String(c);
+					}
+					else
+					{
+						char8 size = '1';
+						
+						size = c[0]; //Wordsize in bytes
+
+						if(size == '1')
+						{
+							mult = 1;
+						}
+						else if(size == '2')
+						{
+							mult = 2;
+						}
+						else if(size == '4')
+						{
+							mult = 4;
+						}
+						else if(size == '8')
+						{
+							mult = 8;
+						}
+							
+
+						BitSize = scope String((8*mult).ToString(.. scope .()));
+						break;
+					}
+
 				}
 
 				//This way we can make the file static and save alot alot of compile time
-				String temp = scope String(scope $"public static uint8[{i.1.Length}] ");
+				String temp = scope String(scope $"public static uint{BitSize}[{(i.1.Length / mult)}] ");
 				FileData.Append(temp);
 
 				//So that we can get the actual filename. There probably is a way to do this faster, but you would need someone less stupid than me to do that.
@@ -104,12 +137,38 @@ namespace AssetBuilder
 
 				//The actual data from the file
 				FileData.Append(" = .(");
-				for(int program = 0; program < i.1.Length;program++)
+				for(int program = 0; program < i.1.Length;program = program +mult)
 				{
 
 					String hexval = scope String();
-
-					((uint8)i.1[program]).ToString(hexval,"X2",null);
+					if(mult == 1)
+					{
+						((uint8)i.1[program]).ToString(hexval,"X2",null);
+					}
+					else if(mult >= 2)
+					{
+						((uint8)i.1[program+1]).ToString(hexval,"X2",null);
+						((uint8)i.1[program]).ToString(hexval,"X2",null);
+					}
+					else if(mult >= 4)
+					{
+						((uint8)i.1[program+3]).ToString(hexval,"X2",null);
+						((uint8)i.1[program+2]).ToString(hexval,"X2",null);
+						((uint8)i.1[program+1]).ToString(hexval,"X2",null);
+						((uint8)i.1[program]).ToString(hexval,"X2",null);
+					}
+					else if(mult >= 8)
+					{
+						((uint8)i.1[program+7]).ToString(hexval,"X2",null);
+						((uint8)i.1[program+6]).ToString(hexval,"X2",null);
+						((uint8)i.1[program+5]).ToString(hexval,"X2",null);
+						((uint8)i.1[program+4]).ToString(hexval,"X2",null);
+						((uint8)i.1[program+3]).ToString(hexval,"X2",null);
+						((uint8)i.1[program+2]).ToString(hexval,"X2",null);
+						((uint8)i.1[program+1]).ToString(hexval,"X2",null);
+						((uint8)i.1[program]).ToString(hexval,"X2",null);
+					}
+					
 
 					FileData.Append($"0x",hexval); //Append each character
 					FileData.Append(",");
@@ -125,4 +184,9 @@ namespace AssetBuilder
 		
 
 	}
+}
+
+class Test
+{
+	public static uint16[2] test = .(0x4353,0x5643);
 }
