@@ -71,8 +71,8 @@ TabLabel = "Program.bf"
 TabWidth = 95.55556
 Type = "SourceViewPanel"
 FilePath = "src\\Program.bf"
-CursorPos = 57
-VertPos = 42.0
+CursorPos = 3194
+VertPos = 126.0
 ProjectName = "AssetBuilder"
 
 [[MainDockingFrame.DockedWidgets.DockedWidgets.DockedWidgets]]

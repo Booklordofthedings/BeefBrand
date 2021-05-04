@@ -7,4 +7,3 @@ You have to Compile the project and run the .exe with
 a path argument. "--path D:\Path\ToThe\Directory".
 It will then follow up by creating that .bf file.
 
-## It currently doesnt remove file endings, so in order for it to work you have to remove the line endings manually first or edit the .bf file afterwards

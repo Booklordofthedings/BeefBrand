@@ -1,4 +1,5 @@
 FileVersion = 1
+Dependencies = {corlib = "*", nativefiledialog-beef = "*"}
 
 [Project]
 Name = "AssetBuilder"

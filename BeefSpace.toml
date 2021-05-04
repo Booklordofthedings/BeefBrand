@@ -1,5 +1,5 @@
 FileVersion = 1
-Projects = {AssetBuilder = {Path = "."}}
+Projects = {AssetBuilder = {Path = "."}, nativefiledialog-beef = "*"}
 
 [Workspace]
 StartupProject = "AssetBuilder"
