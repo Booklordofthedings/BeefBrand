@@ -8,6 +8,7 @@ namespace BeefBrand
 
 		public override void Generate(String outFileName, String outText, ref Flags generateFlags)
 		{
+			generateFlags = .AllowRegenerate;
 			outFileName.Append(mParams["name"]); //Set the name of the file we created
 
 			//Calculate the path of the file
@@ -30,7 +31,7 @@ namespace BeefBrand
 				scope $"""
 				static
 				\{
-					extension Assets
+					extension BrandedAssets
 					\{
 						uint8[{lenght}] {param} = .({hex});
 					\}
@@ -64,7 +65,7 @@ namespace BeefBrand
 }
 static
 {
-	class Assets
+	class BrandedAssets
 	{
 		//This is where the generator will add files to
 	}
