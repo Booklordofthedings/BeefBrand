@@ -1,20 +1,14 @@
 # BeefBrand
-This program generates .bf files that contain a hardcoded version of your assets.  
-That way you can make sure that important files will be distributed with the .exe.
+This program generates .bf files that contain a hardcoded version of your assets  
+by using the build in Generator component from corlib
 
 ## Usage
-You have to Compile the project and run the .exe with
-a path argument. "--path D:\Path\ToThe\Directory".
-It will then follow up by creating that .bf file.
-You can also use the "--out D:\Path\ToThe\Directory"
-argument to specify the output path.
+Add the project to your Workspace.  
+Change your dependencies to BeefBrand.  
+Rightclick on your project.  
+Generate File.  
+Select BeefBrand from the dropdown.  
+Input the name and the path.  
+If relative is checked the path you input will be relative to the directory of your workspace.  
 
-If you want a different word lenght you can add a .bytefactor after the file name and
-before the file ending.
-
-File.8.png  
-1 = 8bytes = uint8 (default)  
-2 = 16bytes = uint16  
-4 = 32bytes = uint32  
-8 = 64bytes = uint64  
-
+![An image of the generator window](example.png)

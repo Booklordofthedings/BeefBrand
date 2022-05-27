@@ -1,6 +1,6 @@
 FileVersion = 1
-Dependencies = {corlib = "*", nativefiledialog-beef = "*"}
 
 [Project]
-Name = "AssetBuilder"
-StartupObject = "AssetBuilder.Program"
+Name = "BeefBrand"
+TargetType = "BeefLib"
+StartupObject = "BeefBrand.Program"

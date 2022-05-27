@@ -1,5 +1,0 @@
-FileVersion = 1
-Projects = {AssetBuilder = {Path = "."}, nativefiledialog-beef = "*"}
-
-[Workspace]
-StartupProject = "AssetBuilder"
