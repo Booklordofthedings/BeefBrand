@@ -44,7 +44,7 @@ namespace BeefBrand
 					\{
 						extension BrandedAssets
 						\{
-							public static uint8[{lenght}] {param} = Compiler.ReadBinary("{p}");
+							public static uint8[?] {param} = Compiler.ReadBinary("{p}");
 						\}
 					\}
 					"""
